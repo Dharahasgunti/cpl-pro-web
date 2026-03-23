@@ -442,23 +442,6 @@ async def main():
             for event in events:
                 # Inside your game loop:
 for event in pygame.event.get():
-    if event.type == pygame.QUIT:
-        running = False
-        
-    # --- THIS PART FIXES MOBILE TOUCH ---
-    # This detects a screen tap (Mouse Click)
-    if event.type == pygame.MOUSEBUTTONDOWN:
-        # We tell the game: "Pretend the Space bar was just pressed"
-        # Replace K_SPACE with whatever key you use to play (K_RETURN, etc.)
-        fake_key_event = pygame.event.Event(pygame.KEYDOWN, key=pygame.K_SPACE)
-        pygame.event.post(fake_key_event)
-    # -------------------------------------
-
-    # Your existing keyboard code stays here:
-    if event.type == pygame.KEYDOWN:
-        if event.key == pygame.K_SPACE:
-            # Your game logic (e.g., rolling the dice)
-            pass
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_r:
                     save_match_to_profile(p_score, c_score, player_team); reset_match()
 
