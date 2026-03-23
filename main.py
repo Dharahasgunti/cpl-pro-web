@@ -439,25 +439,20 @@ async def main():
             p_name, p_runs = calculate_pom()
             draw_text_centered(f"PLAYER OF THE MATCH: {p_name} ({p_runs} Runs)", 600, font_sub, HIGHLIGHT)
             draw_text_centered("PRESS R TO SAVE & RESTART", 780, font_tiny, WHITE)
-            for event in events:
-                # Inside your game loop:
-for event in pygame.event.get():
-                # --- EVENT HANDLING ---
+               # This should be your ONLY event loop line
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
             
             # --- ADD THIS FOR MOBILE TOUCH ---
             if event.type == pygame.MOUSEBUTTONDOWN:
-                # This makes a screen tap act like the SPACE key
                 new_event = pygame.event.Event(pygame.KEYDOWN, key=pygame.K_SPACE)
                 pygame.event.post(new_event)
-            # ----------------------------------
 
-            # This is your existing spacebar code
+            # Your existing spacebar code
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    # Your game logic (Toss, Batting, etc.) starts here
+                    # Match logic starts here
                     pass
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_r:
                     save_match_to_profile(p_score, c_score, player_team); reset_match()
